@@ -52,10 +52,12 @@ class GenerateEvents extends Command implements PromptsForMissingInput
 
         $bar = $this->output->createProgressBar($count);
         $bar->start();
+        $startTime = microtime(true);
         while($count){
             $event = [
                 'client' => $clientTag,
                 'index' => $total-$count+1,
+                'microtime' => number_format(microtime(true) - $startTime, 5),
                 'score' => rand( 1, 10000 ),
                 'payload' => $this->generatePayload(),
             ];
