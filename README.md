@@ -1,4 +1,4 @@
-## Laravel Redis Demo
+## Laravel Redis Demo - CLI 
 
 - Redis Insights
 - Redis Cloud - Free Db 30MB
