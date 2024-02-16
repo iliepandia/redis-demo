@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Jobs\ProcessEvent;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
 
@@ -21,6 +22,10 @@ class GenerateEvents extends Command implements PromptsForMissingInput
      */
     protected $description = 'Generate random events that will be then pushed into the queue.';
 
+    /**
+     * A random string to add to the queue - just so that we use the memory
+     * @return string
+     */
     protected function generatePayload(): string
     {
         $words = ['Ilie', 'Laravel', 'Redis', 'Queue', 'Stress', 'PHP', 'Event', 'Monitor', 'the', 'and', 'because', 'works'];
@@ -62,6 +67,8 @@ class GenerateEvents extends Command implements PromptsForMissingInput
                 'payload' => $this->generatePayload(),
             ];
 
+            ProcessEvent::dispatch( $event );
+
             if( $this->option('verbose')){
                 $this->newLine(2);
                 $this->line(print_r($event, 1));
@@ -78,7 +85,7 @@ class GenerateEvents extends Command implements PromptsForMissingInput
      *
      * @return array
      */
-    protected function promptForMissingArgumentsUsing()
+    protected function promptForMissingArgumentsUsing(): array
     {
         return [
             'count' => [ 'How many events do you want to generate?', 'E.g. 10'],
