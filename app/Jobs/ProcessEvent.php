@@ -24,9 +24,12 @@ class ProcessEvent implements ShouldQueue
      */
     public function handle(): void
     {
-        if(rand(1, 20) < 10 ){
-            //simulate some failures
-            $this->fail( "This job has failed!" );
+        echo "Working on the event: " . $this->event['index']. "\n";
+
+        //simulate some failures
+        if(rand(1, 30) < 10 ){
+            //Throwing an exception allows the queue:worker to continue
+            throw new \RuntimeException("Failed");
         }
     }
 }
