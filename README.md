@@ -8,6 +8,8 @@
 - Attempt to overload the Redis database
 - Simulate jobs failing
 
+- Adding the queue:monitor to the scheduler - this will then need to be added
+  to the server `cron`
 
 ## Commands
 
