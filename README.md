@@ -1,13 +1,18 @@
 ## Laravel Redis Demo - CLI 
 
-- Redis Insights
-- Redis Cloud - Free Db 30MB
+- [Redis Insights](https://redis.com/redis-enterprise/redis-insight/)
+- [Redis Cloud](https://redis.com) - Free Db 30MB 
+
+
 - Generate events
 - Consume events
 - Monitor Status of the queue
+
+
 - Attempt to overload the Redis database
   - So you get `Redis` exceptions when you try to jam data past the quota
 - Simulate jobs failing
+
 
 - Adding the queue:monitor to the scheduler - this will then need to be added
   to the server `cron`
@@ -18,7 +23,11 @@
 
 ## Commands
 
-`app:generate-events` - generate a bunch of tasks and add them into the Redis queue
+- `app:generate-events` - auto generate a bunch of tasks and add them into the Redis queue
+- `gueue:work` - attempt to execute the jobs in the queue
+- `queue:monitor` - show the size of the queue
+- `queue:flush` - empty the table with the failed jobs
+- `queue:failed` - list the failed jobs
 
 ## Observations
 
