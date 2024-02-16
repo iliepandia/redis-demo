@@ -15,8 +15,8 @@
 
 ## Observations
 
-- [FIXED] when a job fails it is still removed from the queue
-- and the worker stops!
+- [FIXED] when a job fails it is still removed from the queue 
+  and the worker stops!
   - there is a difference if I call `$this->fail()` or if I throw an 
     exception!
     - So `$this->fail()` is a permanent failure, the job will not be
@@ -26,4 +26,5 @@
     - Yes, that was the problem. It was trying to save the failed job into the
       database that I did not configure, and instead of throwing an exception
       it would just silently die on me.
-
+    - The problem does show in the Laravel Logs, but was not visible in the
+      console.
