@@ -6,10 +6,15 @@
 - Consume events
 - Monitor Status of the queue
 - Attempt to overload the Redis database
+  - So you get `Redis` exceptions when you try to jam data past the quota
 - Simulate jobs failing
 
 - Adding the queue:monitor to the scheduler - this will then need to be added
   to the server `cron`
+
+- Explore the [_Horizon_](https://laravel.com/docs/10.x/horizon) dashboard
+  - never mind - pnctl extension [does not work on Windows](https://www.php.net/manual/en/pcntl.installation.php), 
+    so I'd have to move my work env on a Linux box. 
 
 ## Commands
 
